@@ -1,6 +1,5 @@
 'use strict';
 window.CAKE_SITE = Object.freeze({
-  "phone": "+77476748877",
   "whatsapp": "+77476748877",
   "instagram": "zhanst_cakes",
   "products": [
