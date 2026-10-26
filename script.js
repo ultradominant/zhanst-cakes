@@ -23,10 +23,10 @@ function show(dialog){dialog.showModal();document.body.classList.add('dialog-ope
 function hide(dialog){dialog.close();if(!document.querySelector('dialog[open]'))document.body.classList.remove('dialog-open')}
 function detail(p){const content=$('#dialog-content');if(!content)return;
  const heading=el('h2','',p.name);heading.id='dialog-title';
- const link=el('a','button',tr('askWhatsapp','Обсудить в WhatsApp ↗'));const url=contactUrl('whatsapp',p);link.href=url||tr('contactsPage','contacts.html');const instagram=el('a','button secondary',tr('askInstagram','Написать в Instagram ↗'));instagram.href=contactUrl('instagram',p)||tr('contactsPage','contacts.html');
+ const link=el('a','button',tr('askWhatsapp','Обсудить в WhatsApp'));const url=contactUrl('whatsapp',p);link.href=url||tr('contactsPage','contacts.html');const instagram=el('a','button secondary',tr('askInstagram','Написать в Instagram'));instagram.href=contactUrl('instagram',p)||tr('contactsPage','contacts.html');
  content.replaceChildren(photo(p),el('p','eyebrow',categories[p.category]),heading,el('p','product-price',price(p)),el('p','dialog-size',p.size||''),el('p','',p.description||''),link,instagram);show($('#product-dialog'));
 }
-function card(p){const node=el('article','product-card'),imageButton=btn('','photo-button',()=>detail(p));imageButton.setAttribute('aria-label',tr('detailsLabel','Подробнее: ')+p.name);imageButton.append(photo(p));node.append(imageButton,el('p','product-category',categories[p.category]),el('h3','',p.name),el('p','product-price',price(p)),el('p','product-size',p.size||''),btn(tr('details','Подробнее ↗'),'product-link',()=>detail(p)));return node}
+function card(p){const node=el('article','product-card'),imageButton=btn('','photo-button',()=>detail(p));imageButton.setAttribute('aria-label',tr('detailsLabel','Подробнее: ')+p.name);imageButton.append(photo(p));node.append(imageButton,el('p','product-category',categories[p.category]),el('h3','',p.name),el('p','product-price',price(p)),el('p','product-size',p.size||''),btn(tr('details','Подробнее'),'product-link',()=>detail(p)));return node}
 const featured=$('#featured-products');if(featured)featured.replaceChildren(...products.filter(p=>p.featured).slice(0,3).map(card));
 const categoryNotes = ui.categoryNotes || Object.freeze({
  all: 'Торты - цена за 1 кг, бенто - за торт, моти - за штуку. Выберите категорию, чтобы узнать условия заказа. Доставка оплачивается отдельно.',
